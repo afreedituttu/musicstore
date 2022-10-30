@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> Album : {{ alb.title }} </h1>
+{% if error_message %}{{ error_message }}{% endif %}
+<form method="post" action="/music/{{ alb.title }}/favorite">
+{% csrf_token %}
+{% for song in alb.song_set.all %}
+<input type="radio" id="song{{ forloop.counter }}"  name="song" value={{ song.id }} />
+<label for="song{{ forloop.counter }}">{{ song.name }}</label><br>
+{% if song.path %}
+<audio controls>
+<source src='{{ song.path.url }}'>
+</audio>
+{% endif %}
+{% if song.name %}
+<a href=''><i class="fa fa-trash"></a>
+{% endif %}
+{% endfor %}
+<input type='submit'>
+</form>
+<a href="{% url 'music:addsong' alb.id %}">add new song</a>
+{% endblock content %}
+

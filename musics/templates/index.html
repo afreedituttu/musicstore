@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2> Albums </h2>
+<section style='display:flex;flex-wrap:wrap;padding:10px;'>
+{% for album in all_album %}
+<div class="card" style="width: 18rem;margin:10px;">
+  <img src="{{ album.logo }}" class="card-img-top" alt="unable to load">
+  <div class="card-body">
+    <h5 class="card-title">{{ album.title }}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="{% url 'music:detail' album.id%}" class="btn btn-primary">Explore</a>
+    <a href='{% url 'music:delete' album.id%}'><i class="fa fa-trash"></i></a>
+  </div>
+</div>
+{% endfor %}
+</section>
+</ul>
+{% endblock content %}
+

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method='POST' action=''>
+{% csrf_token %}
+<h3> Register </h3>
+{% if ErrorMessage %}
+<h3> {{ ErrorMessage }}
+{% endif %}
+<div>
+UserName :
+<input type='text' name='UserName'>
+</div>
+<div>
+Password :
+<input type='text' name='Password'>
+</div>
+<input type="submit">
+</form>
+{% endblock content %}

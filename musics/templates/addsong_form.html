@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method='POST' action=''>
+{% csrf_token %}
+<h3> Register </h3>
+{% if data.ErrorMessage %}
+<h3> {{ data.ErrorMessage }}
+{% endif %}
+<div>
+Song Name
+<input type='text' name='songname'>
+</div>
+<div>
+Path
+<input type='file' name='file'>
+</div>
+<div>
+Duration
+<input type='text' name='duration'>
+</div>
+<input type='submit'>
+</form>
+{% endblock content %}
